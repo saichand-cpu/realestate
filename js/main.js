@@ -1,0 +1,6 @@
+const loader=document.querySelector('.loader');window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hide'),500));
+const reveals=document.querySelectorAll('.reveal');const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});reveals.forEach(el=>io.observe(el));
+const tower=document.querySelector('.tower');const hero=document.querySelector('.hero');window.addEventListener('scroll',()=>{const y=window.scrollY;const r=Math.min(y/window.innerHeight,1);if(tower){tower.style.transform=`rotateY(${-19-r*28}deg) rotateX(${3+r*7}deg) translateY(${r*90}px) scale(${1+r*.08})`;tower.style.filter=`brightness(${1-r*.22})`}});
+document.querySelectorAll('.heart').forEach(b=>b.addEventListener('click',()=>{b.textContent=b.textContent==='♡'?'♥':'♡'}));
+function submitLead(e){e.preventDefault();const data=new FormData(e.target);const subject=encodeURIComponent('Private Real Estate Consultation');const body=encodeURIComponent(`Name: ${data.get('name')}\nPhone: ${data.get('phone')}\nInterest: ${data.get('type')}`);window.location.href=`mailto:hello@aureliaestates.in?subject=${subject}&body=${body}`;return false}
+const menu=document.querySelector('.menu');const nav=document.querySelector('.nav nav');if(menu)menu.addEventListener('click',()=>{nav.classList.toggle('open')});
